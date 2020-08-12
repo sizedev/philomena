@@ -2,16 +2,6 @@ defmodule Philomena.Images.Query do
   alias Philomena.Search.Parser
   alias Philomena.Repo
 
-  defp gallery_id_transform(_ctx, value) do
-    case Integer.parse(value) do
-      {value, ""} when value >= 0 ->
-        {:ok, %{nested: %{path: :galleries, query: %{term: %{"galleries.id" => value}}}}}
-
-      _error ->
-        {:error, "Invalid gallery `#{value}'."}
-    end
-  end
-
   defp user_my_transform(%{user: %{id: id}}, "faves"),
     do: {:ok, %{term: %{favourited_by_user_ids: id}}}
 
@@ -73,11 +63,9 @@ defmodule Philomena.Images.Query do
       float_fields: ~W(aspect_ratio wilson_score duration),
       date_fields: ~W(created_at updated_at first_seen_at),
       literal_fields:
-        ~W(faved_by orig_sha512_hash sha512_hash uploader source_url original_format mime_type),
+        ~W(faved_by orig_sha512_hash sha512_hash uploader source_url original_format mime_type gallery_id),
       ngram_fields: ~W(description),
-      custom_fields: ~W(gallery_id),
       default_field: {"namespaced_tags.name", :term},
-      transforms: %{"gallery_id" => &gallery_id_transform/2},
       aliases: %{
         "faved_by" => "favourited_by_users",
         "faved_by_id" => "favourited_by_user_ids"
@@ -89,8 +77,8 @@ defmodule Philomena.Images.Query do
     fields = anonymous_fields()
 
     Keyword.merge(fields,
-      custom_fields: fields[:custom_fields] ++ ~W(my),
-      transforms: Map.merge(fields[:transforms], %{"my" => &user_my_transform/2})
+      custom_fields: ~W(my),
+      transforms: %{"my" => &user_my_transform/2}
     )
   end
 

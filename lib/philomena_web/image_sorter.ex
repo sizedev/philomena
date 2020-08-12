@@ -55,13 +55,13 @@ defmodule PhilomenaWeb.ImageSorter do
           query: query,
           sorts: [
             %{
-              "galleries.position" => %{
+              "_script" => %{
+                type: "number",
                 order: sd,
-                nested: %{
-                  path: :galleries,
-                  filter: %{
-                    term: %{"galleries.id" => gallery}
-                  }
+                script: %{
+                  lang: "painless",
+                  source: "params._source.gallery_position[params.gallery_id]",
+                  params: %{gallery_id: to_string(gallery)}
                 }
               }
             },
