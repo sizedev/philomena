@@ -822,30 +822,10 @@ ALTER SEQUENCE public.image_intensities_id_seq OWNED BY public.image_intensities
 --
 
 CREATE TABLE public.image_sources (
-    id bigint NOT NULL,
     image_id bigint NOT NULL,
     source character varying(255) NOT NULL,
     CONSTRAINT image_sources_source_check CHECK (((substr((source)::text, 1, 7) = 'http://'::text) OR (substr((source)::text, 1, 8) = 'https://'::text)))
 );
-
-
---
--- Name: image_sources_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.image_sources_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: image_sources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.image_sources_id_seq OWNED BY public.image_sources.id;
 
 
 --
@@ -2236,13 +2216,6 @@ ALTER TABLE ONLY public.image_intensities ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
--- Name: image_sources id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.image_sources ALTER COLUMN id SET DEFAULT nextval('public.image_sources_id_seq'::regclass);
-
-
---
 -- Name: images id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2595,14 +2568,6 @@ ALTER TABLE ONLY public.image_features
 
 ALTER TABLE ONLY public.image_intensities
     ADD CONSTRAINT image_intensities_pkey PRIMARY KEY (id);
-
-
---
--- Name: image_sources image_sources_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.image_sources
-    ADD CONSTRAINT image_sources_pkey PRIMARY KEY (id);
 
 
 --
@@ -3368,6 +3333,13 @@ CREATE INDEX index_image_hides_on_user_id ON public.image_hides USING btree (use
 --
 
 CREATE UNIQUE INDEX index_image_intensities_on_image_id ON public.image_intensities USING btree (image_id);
+
+
+--
+-- Name: index_image_source_on_image_id_and_source; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_image_source_on_image_id_and_source ON public.image_sources USING btree (image_id, source);
 
 
 --

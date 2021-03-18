@@ -23,9 +23,11 @@ defmodule Philomena.Repo.Migrations.RewriteSourceChanges do
     end
 
     alter table(:image_sources) do
+      remove :id
       modify :source, :string
     end
 
+    create index(:image_sources, [:image_id, :source], name: "index_image_source_on_image_id_and_source", unique: true)
     drop constraint(:image_sources, :length_must_be_valid, check: "length(source) >= 8 and length(source) <= 1024")
     create constraint(:image_sources, :image_sources_source_check, check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'")
 
@@ -88,6 +90,7 @@ defmodule Philomena.Repo.Migrations.RewriteSourceChanges do
     execute("truncate image_sources")
     drop constraint(:image_sources, :image_sources_source_check, check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'")
     create constraint(:image_sources, :length_must_be_valid, check: "length(source) >= 8 and length(source) <= 1024")
+    drop index(:image_sources, [:image_id, :source], name: "index_image_source_on_image_id_and_source")
 
     alter table(:image_sources) do
       modify :source, :text
