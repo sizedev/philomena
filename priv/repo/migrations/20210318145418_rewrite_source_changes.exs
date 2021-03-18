@@ -1,76 +1,96 @@
 defmodule Philomena.Repo.Migrations.RewriteSourceChanges do
   use Ecto.Migration
 
-  def change do
-    create table(:new_source_changes) do
-      add :image_id, references(:images), null: false
-      add :user_id, references(:users)
+  def up do
+    rename table(:source_changes), to: table(:old_source_changes)
+    execute("alter index index_source_changes_on_image_id rename to index_old_source_changes_on_image_id")
+    execute("alter index index_source_changes_on_user_id rename to index_old_source_changes_on_user_id")
+    execute("alter index index_source_changes_on_ip rename to index_old_source_changes_on_ip")
+    execute("alter table old_source_changes rename constraint source_changes_pkey to old_source_changes_pkey")
+    execute("alter sequence source_changes_id_seq rename to old_source_changes_id_seq")
+
+    create table(:source_changes) do
+      add :image_id, references(:images, on_update: :update_all, on_delete: :delete_all), null: false
+      add :user_id, references(:users, on_update: :update_all, on_delete: :delete_all)
       add :ip, :inet, null: false
       timestamps(inserted_at: :created_at)
 
+      add :added, :boolean, null: false
       add :fingerprint, :string
       add :user_agent, :string, default: ""
       add :referrer, :string, default: ""
       add :value, :string, null: false
-      add :added, :boolean, null: false
     end
 
-    alter table (:image_sources) do
-      modify(:source, :string, from: :text, size: 255)
-      drop constraint(:length_must_be_valid, check: "length(source) >= 8 and length(source) <= 1024")
-      add constraint(:image_sources_source_check, check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'")
+    alter table(:image_sources) do
+      modify :source, :string
     end
 
-    if direction() == :up do
-      execute("""
-      insert into image_sources (image_id, source)
-      select id, substr(source_url, 1, 255) from images
-      where source_url is not null and substr(source_url, 1, 7) = 'http://' or substr(source_url, 1, 8) = 'https://';
-      """)
+    drop constraint(:image_sources, :length_must_be_valid, check: "length(source) >= 8 and length(source) <= 1024")
+    create constraint(:image_sources, :image_sources_source_check, check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'")
 
-      # First insert the "added" changes...
-      execute("""
-      with ranked_added_source_changes as (
-        select
-          image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent,
-          substr(referrer, 1, 255) as referrer,
-          substr(new_value, 1, 255) as value, true as added,
-          rank() over (partition by image_id order by created_at asc)
-          from source_changes
-          where new_value is not null
-      )
-      insert into new_source_changes
-      (image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added)
-      select image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added
-      from ranked_added_source_changes
-      where "rank" > 1;
-      """)
+    execute("""
+    insert into image_sources (image_id, source)
+    select id as image_id, substr(source_url, 1, 255) as source from images
+    where source_url is not null and (substr(source_url, 1, 7) = 'http://' or substr(source_url, 1, 8) = 'https://');
+    """)
 
-      # ...then the "removed" changes
-      execute("""
-      with ranked_removed_source_changes as (
-        select
-          image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent,
-          substr(referrer, 1, 255) as referrer,
-          substr(new_value, 1, 255) as value, false as added,
-          rank() over (partition by image_id order by created_at desc)
-          from source_changes
-          where new_value is not null
-      )
-      insert into new_source_changes
-      (image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added)
-      select image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added
-      from ranked_removed_source_changes
-      where "rank" > 1;
-      """)
-    else if direction() == :down
-      execute("""
-      truncate new_source_changes;
-      truncate image_sources;
-      """)
+    # First insert the "added" changes...
+    execute("""
+    with ranked_added_source_changes as (
+      select
+        image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent,
+        substr(referrer, 1, 255) as referrer,
+        substr(new_value, 1, 255) as value, true as added,
+        rank() over (partition by image_id order by created_at asc)
+        from old_source_changes
+        where new_value is not null
+    )
+    insert into source_changes
+    (image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added)
+    select image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added
+    from ranked_added_source_changes
+    where "rank" > 1;
+    """)
+
+    # ...then the "removed" changes
+    execute("""
+    with ranked_removed_source_changes as (
+      select
+        image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent,
+        substr(referrer, 1, 255) as referrer,
+        substr(new_value, 1, 255) as value, false as added,
+        rank() over (partition by image_id order by created_at desc)
+        from old_source_changes
+        where new_value is not null
+    )
+    insert into source_changes
+    (image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added)
+    select image_id, user_id, ip, created_at, updated_at, fingerprint, user_agent, referrer, value, added
+    from ranked_removed_source_changes
+    where "rank" > 1;
+    """)
+
+    create index(:source_changes, [:image_id], name: "index_source_changes_on_image_id")
+    create index(:source_changes, [:user_id], name: "index_source_changes_on_user_id")
+    create index(:source_changes, [:ip], name: "index_source_changes_on_ip")
+  end
+
+  def down do
+    drop table(:source_changes)
+    rename table(:old_source_changes), to: table(:source_changes)
+    execute("alter index index_old_source_changes_on_image_id rename to index_source_changes_on_image_id")
+    execute("alter index index_old_source_changes_on_user_id rename to index_source_changes_on_user_id")
+    execute("alter index index_old_source_changes_on_ip rename to index_source_changes_on_ip")
+    execute("alter table source_changes rename constraint old_source_changes_pkey to source_changes_pkey")
+    execute("alter sequence old_source_changes_id_seq rename to source_changes_id_seq")
+
+    execute("truncate image_sources")
+    drop constraint(:image_sources, :image_sources_source_check, check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'")
+    create constraint(:image_sources, :length_must_be_valid, check: "length(source) >= 8 and length(source) <= 1024")
+
+    alter table(:image_sources) do
+      modify :source, :text
     end
-
-    rename table(:source_changes), to: table(:old_source_changes)
-    rename table(:new_source_changes), to: table(:source_changes)
   end
 end
