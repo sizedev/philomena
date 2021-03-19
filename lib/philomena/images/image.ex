@@ -18,6 +18,7 @@ defmodule Philomena.Images.Image do
   alias Philomena.TagChanges.TagChange
 
   alias Philomena.Images.TagDiffer
+  alias Philomena.Images.SourceDiffer
   alias Philomena.Images.TagValidator
   alias Philomena.Images.DnpValidator
   alias Philomena.Repo
@@ -91,6 +92,8 @@ defmodule Philomena.Images.Image do
 
     field :removed_tags, {:array, :any}, default: [], virtual: true
     field :added_tags, {:array, :any}, default: [], virtual: true
+    field :removed_sources, {:array, :any}, default: [], virtual: true
+    field :added_source, {:array, :any}, default: [], virtual: true
 
     field :uploaded_image, :string, virtual: true
     field :removed_image, :string, virtual: true
@@ -175,11 +178,10 @@ defmodule Philomena.Images.Image do
     |> change(image: nil)
   end
 
-  def source_changeset(image, attrs) do
+  def source_changeset(image, attrs, old_sources, new_sources) do
     image
-    |> cast(attrs, [:source_url])
-    |> validate_required(:source_url)
-    |> validate_format(:source_url, ~r/\Ahttps?:\/\//)
+    |> cast(attrs, [])
+    |> SourceDiffer.diff_input(old_sources, new_sources)
   end
 
   def tag_changeset(image, attrs, old_tags, new_tags, excluded_tags \\ []) do

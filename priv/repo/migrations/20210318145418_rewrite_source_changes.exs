@@ -3,14 +3,27 @@ defmodule Philomena.Repo.Migrations.RewriteSourceChanges do
 
   def up do
     rename table(:source_changes), to: table(:old_source_changes)
-    execute("alter index index_source_changes_on_image_id rename to index_old_source_changes_on_image_id")
-    execute("alter index index_source_changes_on_user_id rename to index_old_source_changes_on_user_id")
+
+    execute(
+      "alter index index_source_changes_on_image_id rename to index_old_source_changes_on_image_id"
+    )
+
+    execute(
+      "alter index index_source_changes_on_user_id rename to index_old_source_changes_on_user_id"
+    )
+
     execute("alter index index_source_changes_on_ip rename to index_old_source_changes_on_ip")
-    execute("alter table old_source_changes rename constraint source_changes_pkey to old_source_changes_pkey")
+
+    execute(
+      "alter table old_source_changes rename constraint source_changes_pkey to old_source_changes_pkey"
+    )
+
     execute("alter sequence source_changes_id_seq rename to old_source_changes_id_seq")
 
     create table(:source_changes) do
-      add :image_id, references(:images, on_update: :update_all, on_delete: :delete_all), null: false
+      add :image_id, references(:images, on_update: :update_all, on_delete: :delete_all),
+        null: false
+
       add :user_id, references(:users, on_update: :update_all, on_delete: :delete_all)
       add :ip, :inet, null: false
       timestamps(inserted_at: :created_at)
@@ -27,9 +40,18 @@ defmodule Philomena.Repo.Migrations.RewriteSourceChanges do
       modify :source, :string
     end
 
-    create index(:image_sources, [:image_id, :source], name: "index_image_source_on_image_id_and_source", unique: true)
-    drop constraint(:image_sources, :length_must_be_valid, check: "length(source) >= 8 and length(source) <= 1024")
-    create constraint(:image_sources, :image_sources_source_check, check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'")
+    create index(:image_sources, [:image_id, :source],
+             name: "index_image_source_on_image_id_and_source",
+             unique: true
+           )
+
+    drop constraint(:image_sources, :length_must_be_valid,
+           check: "length(source) >= 8 and length(source) <= 1024"
+         )
+
+    create constraint(:image_sources, :image_sources_source_check,
+             check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'"
+           )
 
     execute("""
     insert into image_sources (image_id, source)
@@ -81,16 +103,36 @@ defmodule Philomena.Repo.Migrations.RewriteSourceChanges do
   def down do
     drop table(:source_changes)
     rename table(:old_source_changes), to: table(:source_changes)
-    execute("alter index index_old_source_changes_on_image_id rename to index_source_changes_on_image_id")
-    execute("alter index index_old_source_changes_on_user_id rename to index_source_changes_on_user_id")
+
+    execute(
+      "alter index index_old_source_changes_on_image_id rename to index_source_changes_on_image_id"
+    )
+
+    execute(
+      "alter index index_old_source_changes_on_user_id rename to index_source_changes_on_user_id"
+    )
+
     execute("alter index index_old_source_changes_on_ip rename to index_source_changes_on_ip")
-    execute("alter table source_changes rename constraint old_source_changes_pkey to source_changes_pkey")
+
+    execute(
+      "alter table source_changes rename constraint old_source_changes_pkey to source_changes_pkey"
+    )
+
     execute("alter sequence old_source_changes_id_seq rename to source_changes_id_seq")
 
     execute("truncate image_sources")
-    drop constraint(:image_sources, :image_sources_source_check, check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'")
-    create constraint(:image_sources, :length_must_be_valid, check: "length(source) >= 8 and length(source) <= 1024")
-    drop index(:image_sources, [:image_id, :source], name: "index_image_source_on_image_id_and_source")
+
+    drop constraint(:image_sources, :image_sources_source_check,
+           check: "substr(source, 1, 7) = 'http://' or substr(source, 1, 8) = 'https://'"
+         )
+
+    create constraint(:image_sources, :length_must_be_valid,
+             check: "length(source) >= 8 and length(source) <= 1024"
+           )
+
+    drop index(:image_sources, [:image_id, :source],
+           name: "index_image_source_on_image_id_and_source"
+         )
 
     alter table(:image_sources) do
       modify :source, :text
