@@ -1,0 +1,13 @@
+.block {
+  border: 1px solid var(--accent-border-color);
+}
+
+.block__content {
+  padding: var(--padding-normal);
+}
+
+.block__header {
+  line-height: var(--padding-large);
+  padding: 0 var(--padding-normal);
+  background: var(--accent-color);
+}

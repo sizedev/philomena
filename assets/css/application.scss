@@ -1,0 +1,14 @@
+//
+// Main stylesheet file.
+//
+// This generates the base file for the stylesheets used throughout the project.
+// Themes should be contained within the "themes" folder, and only contain
+// color variations, and optional CSS changes.
+//
+
+// Import the default theme to act as a fallback.
+@import "~themes/dark-blue";
+
+@import "~elements/base";
+@import "~elements/block";
+@import "~elements/measurements";

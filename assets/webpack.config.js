@@ -46,7 +46,8 @@ module.exports = {
   performance: { hints: false },
   resolve: {
     alias: {
-      common: path.resolve(__dirname, 'css/common/'),
+      elements: path.resolve(__dirname, 'css/elements/'),
+      themes: path.resolve(__dirname, 'css/themes/'),
       views: path.resolve(__dirname, 'css/views/')
     }
   },
@@ -77,7 +78,7 @@ module.exports = {
         ],
       },
       {
-        test: /themes\/[a-z]+\.scss$/,
+        test: /(themes\/[a-z\-]+\.scss|application.scss)$/,
         use: [
           {
             loader: 'file-loader',
