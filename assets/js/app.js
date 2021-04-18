@@ -20,5 +20,5 @@ import './when-ready';
 // Base stylesheet.
 import '../css/application.scss';
 
-// Themes
+// Themes.
 import '../css/themes/dark-blue.scss';

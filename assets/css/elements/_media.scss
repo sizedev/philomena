@@ -1,0 +1,28 @@
+// Stuff that should apply to phones
+@media (max-width: $phone_width) {
+  .hidden--phone {
+    display: none !important;
+  }
+
+  .hidden--mobile {
+    display: none !important;
+  }
+}
+
+// Stuff that should apply to tablets
+@media (max-width: $desktop_width) and (min-width: $phone_width + 1) {
+  .hidden--tablet {
+    display: none !important;
+  }
+
+  .hidden--mobile {
+    display: none !important;
+  }
+}
+
+// Stuff that should apply to desktops
+@media (min-width: $desktop_width + 1) {
+  .hidden--desktop {
+    display: none !important;
+  }
+}

@@ -48,7 +48,8 @@ module.exports = {
     alias: {
       elements: path.resolve(__dirname, 'css/elements/'),
       themes: path.resolve(__dirname, 'css/themes/'),
-      views: path.resolve(__dirname, 'css/views/')
+      views: path.resolve(__dirname, 'css/views/'),
+      meta: path.resolve(__dirname, 'css/meta/')
     }
   },
   module: {

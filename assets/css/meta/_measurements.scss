@@ -1,0 +1,13 @@
+$desktop_width: 1280px;
+$phone_width: 700px;
+
+:root {
+  --padding-small: 0.5em;
+  --padding-normal: 1em;
+  --padding-large: 2em;
+
+  --font-size: 14px;
+
+  --desktop-width: #{$desktop_width};
+  --phone-width: #{$phone_width};
+}
