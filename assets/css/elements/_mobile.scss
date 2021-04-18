@@ -1,5 +1,5 @@
-// Stuff that should apply to phones
-@media (max-width: $phone_width) {
+// Stuff that should apply to phones.
+@include if-phone {
   .hidden--phone {
     display: none !important;
   }
@@ -9,8 +9,8 @@
   }
 }
 
-// Stuff that should apply to tablets
-@media (max-width: $desktop_width) and (min-width: $phone_width + 1) {
+// Stuff that should apply to tablets.
+@include if-tablet {
   .hidden--tablet {
     display: none !important;
   }
@@ -20,8 +20,8 @@
   }
 }
 
-// Stuff that should apply to desktops
-@media (min-width: $desktop_width + 1) {
+// Stuff that should apply to desktops.
+@include if-desktop {
   .hidden--desktop {
     display: none !important;
   }

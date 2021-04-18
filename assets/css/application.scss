@@ -10,13 +10,14 @@
 // Import the default theme to act as a fallback.
 @import "~themes/dark-blue";
 
-// Files containing meta properties, such as variable definitions.
-@import "~meta/measurements";
+// Files containing common properties, such as variable definitions.
+@import "~common/measurements";
+@import "~common/mixins";
 
 // General style elements that are used throughout the project.
 @import "~elements/base";
 @import "~elements/block";
-@import "~elements/media";
+@import "~elements/mobile";
 
 // Style elements specific to certain pages.
 // @import "~views/whatever";
