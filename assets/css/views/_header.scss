@@ -1,0 +1,13 @@
+.header {
+  background: var(--accent-color);
+  line-height: var(--navbar-size);
+
+  &--secondary {
+    background: var(--accent-muted-color);
+    line-height: var(--padding-large);
+  }
+
+  &__force-right {
+    margin-left: auto;
+  }
+}
