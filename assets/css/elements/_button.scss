@@ -8,7 +8,7 @@
 
   &:hover {
     background: var(--accent-dark-color);
-    transition: background 0.25s ease;
+    transition: background var(--transition-animation-duration) ease;
   }
 
   &--important {
@@ -23,15 +23,4 @@
       margin-right: var(--padding-small);
     }
   }
-}
-
-.multibutton {
-  display: flex;
-  flex-direction: row;
-  line-height: var(--padding-normal);
-  border: 1px solid var(--accent-border-color);
-}
-
-.multibutton button {
-  border: 0;
 }

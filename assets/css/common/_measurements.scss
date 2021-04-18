@@ -6,11 +6,13 @@ $phone_width: 700px;
   --padding-normal: 1em;
   --padding-large: 2em;
 
-  --navbar-size: 3em;
-  --navbar-avatar-size: 2.5em;
+  --navbar-size: 40px;
+  --navbar-avatar-size: 36px;
 
   --font-size: 14px;
 
   --desktop-width: #{$desktop_width};
   --phone-width: #{$phone_width};
+
+  --transition-animation-duration: 0.25s;
 }
