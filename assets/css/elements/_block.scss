@@ -1,5 +1,6 @@
 .block {
   border: 1px solid var(--accent-border-color);
+  margin-bottom: var(--padding-small);
 
   &__content {
     padding: var(--padding-normal);
@@ -8,6 +9,15 @@
   &__header {
     line-height: var(--padding-large);
     padding: 0 var(--padding-normal);
-    background: var(--accent-color);
+    background: var(--accent-muted-color);
+
+    &--single-item {
+      @extend .block__header;
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
+      font-weight: bold;
+      color: var(--link-color) !important;
+    }
   }
 }

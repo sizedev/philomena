@@ -1,11 +1,14 @@
-.block__content.profile-about
-  = cond do
-    - @user.description not in [nil, ""] ->
+= cond do
+  - @user.description not in [nil, ""] ->
+    .block__content.profile-about
       == @about_me
+  - not can?(@conn, :edit_description, @user) ->
+    .block__content.profile-about
+  - true ->
 
-    - current?(@user, @conn.assigns.current_user) ->
-      em
-        ' Want to
-        => link "add some info about yourself?", to: Routes.profile_description_path(@conn, :edit, @user)
 
-    - true ->
+= if can?(@conn, :edit_description, @user) do
+  .block__content
+    a.button href=Routes.profile_description_path(@conn, :edit, @user)
+      i.fa.fa-edit>
+      | Edit

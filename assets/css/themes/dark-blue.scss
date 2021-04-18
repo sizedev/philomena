@@ -30,7 +30,7 @@ $tag_spoiler_color: #4f3811;
   --background-color: #{$background_color};
   --text-color: #{$text_color};
 
-  --link-color: #{lighten(saturate($accent_color, 10%), 20%)};
+  --link-color: #{lighten(saturate($accent_color, 5%), 25%)};
   --link-hover-color: #{$text_color};
 
   --accent-color: #{$accent_color};
