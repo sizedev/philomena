@@ -36,7 +36,7 @@
       = render PhilomenaWeb.ImageView, "_add_to_gallery_dropdown.html", image: @image, user_galleries: @user_galleries, conn: @conn
       a href=Routes.image_related_path(@conn, :index, @image) title="Related Images"
         i.fa.fa-sitemap>
-        span.hide-limited-desktop.hide-mobile Related
+        span.hidden--mobile Related
     .stretched-mobile-links
       a href="#{pretty_url(@image, false, false)}" rel="nofollow" title="View (tags in filename)"
         i.fa.fa-eye>

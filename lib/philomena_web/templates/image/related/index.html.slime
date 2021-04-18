@@ -1,6 +1,6 @@
 .block#imagelist-container
   .block__header
-    .block__header__title.hide-mobile
+    .block__header__title.hidden--mobile
       ' Viewing related images for
       strong>
         | #

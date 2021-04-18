@@ -1,6 +1,6 @@
 .flex.flex--centered.header--secondary__admin-links.stretched-mobile-links.js-staff-action
   = if manages_users?(@conn) do
-    .dropdown.hide-mobile
+    .dropdown.hidden--mobile
       a.header__link title="Admin"
         ' A
         i.fa.fa-caret-down
@@ -66,7 +66,7 @@
         = @dnp_entry_count
 
   = if manages_bans?(@conn) do
-    .dropdown.hide-mobile
+    .dropdown.hidden--mobile
       a.header__link title="Bans"
         ' B
         i.fa.fa-caret-down
