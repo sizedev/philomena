@@ -15,3 +15,13 @@
     @content;
   }
 }
+
+@mixin if-mobile {
+  @media (max-width: $phone_width) {
+    @content;
+  }
+
+  @media (max-width: $desktop_width) and (min-width: $phone_width + 1) {
+    @content;
+  }
+}
