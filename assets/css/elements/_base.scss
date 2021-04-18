@@ -18,3 +18,7 @@ a, a:active, a:visited {
 a:hover {
   color: var(--link-hover-color);
 }
+
+.hidden {
+  display: none !important;
+}
