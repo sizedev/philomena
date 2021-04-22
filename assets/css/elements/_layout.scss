@@ -1,0 +1,23 @@
+.column-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  &__left {
+    margin-right: var(--padding-normal);
+  }
+
+  &__main {
+    flex: 1 0 auto;
+  }
+}
+
+@include if-mobile {
+  .column-layout {
+    flex-direction: column;
+
+    &__left {
+      margin-right: 0;
+    }
+  }
+}

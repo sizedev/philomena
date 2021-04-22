@@ -1,6 +1,7 @@
 .header {
   background: var(--accent-color);
   line-height: var(--navbar-size);
+  padding: 0 var(--padding-normal);
 
   &--secondary {
     background: var(--accent-muted-color);

@@ -10,6 +10,16 @@ body {
   color: var(--text-color);
 }
 
+main {
+  padding: var(--padding-normal);
+}
+
+@include if-mobile {
+  main {
+    padding: var(--padding-small);
+  }
+}
+
 a, a:active, a:visited {
   color: var(--link-color);
   text-decoration: none;
