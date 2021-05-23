@@ -1,5 +1,5 @@
-$desktop_width: 1280px;
-$phone_width: 700px;
+$desktop-width: 1280px;
+$phone-width: 700px;
 
 :root {
   --padding-small: 0.5em;
@@ -7,12 +7,21 @@ $phone_width: 700px;
   --padding-large: 2em;
 
   --navbar-size: 40px;
+  --navbar-secondary-size: 32px;
   --navbar-avatar-size: 36px;
 
-  --font-size: 14px;
+  --border-radius: 4px;
 
-  --desktop-width: #{$desktop_width};
-  --phone-width: #{$phone_width};
+  --font-size: 14px;
+  --font-h1-size: 1.5em;
+  --font-h2-size: 1.35em;
+  --font-h3-size: 1.2em;
+  --font-h4-size: 1.1em;
+  --font-h5-size: 1em;
+  --font-h6-size: 1em;
+
+  --desktop-width: #{$desktop-width};
+  --phone-width: #{$phone-width};
 
   --transition-animation-duration: 0.25s;
 }
