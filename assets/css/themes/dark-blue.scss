@@ -35,7 +35,7 @@ $tag-spoiler-color: #4f3811;
 @mixin type-color($type, $color) {
   --#{$type}-color: #{$color};
   --#{$type}-border-color: #{lighten(desaturate($color, 5%), 35%)};
-  --#{$type}-dark-color: #{darken($color, 7%)};
+  --#{$type}-dark-color: #{darken($color, 15%)};
 }
 
 :root {
