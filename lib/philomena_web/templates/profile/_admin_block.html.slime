@@ -1,4 +1,4 @@
-.block--fixed
+.block.block--fixed
   i.fa.fa-fw.fa-calendar>
   ' Account created
   = @user.created_at

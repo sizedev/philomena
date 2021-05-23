@@ -1,7 +1,7 @@
 $background-color: #131a22;
 $text-color: #e0e0e0;
 
-$accent-color: #3a568a;
+$accent-color: #2e4c80;
 $danger-color: #57261f;
 $warning-color: #5c472a;
 $success-color: #255339;
@@ -42,15 +42,15 @@ $tag-spoiler-color: #4f3811;
   --background-color: #{$background-color};
   --text-color: #{$text-color};
 
-  --link-color: #{lighten(saturate($accent-color, 5%), 25%)};
+  --link-color: #{lighten(saturate($accent-color, 7%), 30%)};
   --link-hover-color: #{$text-color};
 
   --accent-color: #{$accent-color};
   --accent-border-color: #{lighten($accent-color, 20%)};
   --accent-muted-color: #{darken(desaturate($accent-color, 10%), 15%)};
-  --accent-dark-color: #{darken(desaturate($accent-color, 5%), 20%)};
-  --accent-text-color: #{lighten(saturate($accent-color, 10%), 20%)};
-  --accent-text-muted-color: #{lighten(desaturate($accent-color, 15%), 20%)};
+  --accent-dark-color: #{darken(desaturate($accent-color, 5%), 15%)};
+  --accent-text-color: #{lighten(saturate($accent-color, 10%), 25%)};
+  --accent-text-muted-color: #{lighten(desaturate($accent-color, 15%), 25%)};
 
   --upvote-color: #{$upvote-color};
   --downvote-color: #{$downvote-color};

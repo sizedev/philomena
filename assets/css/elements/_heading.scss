@@ -7,7 +7,7 @@
   }
 }
 
-@mixin heading-color($type) {
+@mixin heading-type($type) {
   .heading--#{$type} {
     border-bottom-color: var(--#{$type}-border-color);
   }
@@ -25,8 +25,8 @@ h6 {
   font-weight: normal;
 }
 
-@include heading-color(success);
-@include heading-color(warning);
-@include heading-color(danger);
-@include heading-color(information);
-@include heading-color(purple);
+@include heading-type(success);
+@include heading-type(warning);
+@include heading-type(danger);
+@include heading-type(information);
+@include heading-type(purple);

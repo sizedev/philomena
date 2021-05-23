@@ -1,4 +1,4 @@
-@mixin button-type {
+@mixin button-type($type) {
   .button--#{$type} {
     border-color: var(--#{$type}-border-color);
 

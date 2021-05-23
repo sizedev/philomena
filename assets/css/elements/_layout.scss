@@ -2,22 +2,23 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+}
 
-  &__left {
-    margin-right: var(--padding-normal);
-  }
+.column-layout__left {
+  margin-right: var(--padding-normal);
+  width: var(--column-left-width);
+}
 
-  &__main {
-    flex: 1 0 auto;
-  }
+.column-layout__main {
+  flex: 1 0 auto;
 }
 
 @include if-mobile {
   .column-layout {
     flex-direction: column;
+  }
 
-    &__left {
-      margin-right: 0;
-    }
+  .column-layout__left {
+    margin-right: 0;
   }
 }
