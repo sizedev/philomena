@@ -1,10 +1,22 @@
+@mixin button-type {
+  .button--#{$type} {
+    border-color: var(--#{$type}-border-color);
+
+    .button--important {
+      background: var(--#{$type}-color) !important;
+      box-shadow: 0 -1px var(--#{$type}-dark-color) inset;
+    }
+  }
+}
+
 .button {
   font-weight: bold;
-  border: 1px solid var(--accent-border-color);
   background: var(--background-color);
   color: var(--text-color) !important;
   font-size: var(--padding-normal);
   padding: var(--padding-small);
+  border: 1px solid var(--accent-border-color);
+  border-radius: var(--border-radius);
 
   &:hover {
     background: var(--accent-dark-color);
@@ -13,6 +25,7 @@
 
   &--important {
     background: var(--accent-color);
+    box-shadow: 0 -1px var(--accent-dark-color) inset;
   }
 
   &__row {
@@ -24,3 +37,9 @@
     }
   }
 }
+
+@include button-type(success);
+@include button-type(warning);
+@include button-type(danger);
+@include button-type(information);
+@include button-type(purple);
