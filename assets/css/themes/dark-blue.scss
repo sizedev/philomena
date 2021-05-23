@@ -1,5 +1,5 @@
 $background-color: #131a22;
-$text_color: #e0e0e0;
+$text-color: #e0e0e0;
 
 $accent-color: #3a568a;
 $danger-color: #57261f;
@@ -28,10 +28,10 @@ $tag-spoiler-color: #4f3811;
 
 :root {
   --background-color: #{$background-color};
-  --text-color: #{$text_color};
+  --text-color: #{$text-color};
 
   --link-color: #{lighten(saturate($accent-color, 5%), 25%)};
-  --link-hover-color: #{$text_color};
+  --link-hover-color: #{$text-color};
 
   --accent-color: #{$accent-color};
   --accent-border-color: #{lighten($accent-color, 20%)};
