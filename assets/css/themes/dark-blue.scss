@@ -26,6 +26,18 @@ $tag-content-fanmade-color: #622c4e;
 $tag-content-official-color: #4b491c;
 $tag-spoiler-color: #4f3811;
 
+@mixin tag-color($tagname, $color, $text-percentage: 35%, $border-percentage: 15%) {
+  --tag-#{$tagname}-color: #{$color};
+  --tag-#{$tagname}-border-color: #{lighten($color, $border-percentage)};
+  --tag-#{$tagname}-text-color: #{lighten($color, $text-percentage)}; 
+}
+
+@mixin type-color($type, $color) {
+  --#{$type}-color: #{$color};
+  --#{$type}-border-color: #{lighten(desaturate($color, 5%), 35%)};
+  --#{$type}-dark-color: #{darken($color, 7%)};
+}
+
 :root {
   --background-color: #{$background-color};
   --text-color: #{$text-color};
@@ -40,55 +52,30 @@ $tag-spoiler-color: #4f3811;
   --accent-text-color: #{lighten(saturate($accent-color, 10%), 20%)};
   --accent-text-muted-color: #{lighten(desaturate($accent-color, 15%), 20%)};
 
-  --danger-color: #{$danger-color};
-  --danger-border-color: #{lighten(desaturate($danger-color, 5%), 35%)};
-  --danger-dark-color: #{darken($danger-color, 7%)};
-  --warning-color: #{$warning-color};
-  --warning-border-color: #{lighten(desaturate($warning-color, 5%), 35%)};
-  --success-color: #{$success-color};
-  --success-border-color: #{lighten(desaturate($success-color, 5%), 35%)};
-  --information-color: #{$information-color};
-  --information-border-color: #{lighten(desaturate($information-color, 5%), 35%)};
-  --purple-color: #{$purple-color};
-  --purple-border-color: #{lighten(desaturate($purple-color, 5%), 35%)};
-
   --upvote-color: #{$upvote-color};
   --downvote-color: #{$downvote-color};
   --fave-color: #{$fave-color};
   --comment-color: #{$comment-color};
   --hide-color: #{$hide-color};
 
-  --tag-default-color: #{$tag-default-color};
-  --tag-default-border-color: #{lighten($tag-default-color, 15%)};
-  --tag-default-text-color: #{lighten($tag-default-color, 35%)};
-  --tag-error-color: #{$tag-error-color};
-  --tag-error-border-color: #{lighten($tag-error-color, 15%)};
-  --tag-error-text-color: #{lighten($tag-error-color, 37%)};
-  --tag-rating-color: #{$tag-rating-color};
-  --tag-rating-border-color: #{lighten($tag-rating-color, 15%)};
-  --tag-rating-text-color: #{lighten($tag-rating-color, 37%)};
-  --tag-origin-color: #{$tag-origin-color};
-  --tag-origin-border-color: #{lighten(desaturate($tag-origin-color, 15%), 12%)};
-  --tag-origin-text-color: #{lighten($tag-origin-color, 42%)};
-  --tag-character-color: #{$tag-character-color};
-  --tag-character-border-color: #{lighten($tag-character-color, 15%)};
-  --tag-character-text-color: #{lighten($tag-character-color, 35%)};
-  --tag-oc-color: #{$tag-oc-color};
-  --tag-oc-border-color: #{lighten($tag-oc-color, 15%)};
-  --tag-oc-text-color: #{lighten($tag-oc-color, 40%)};
-  --tag-species-color: #{$tag-species-color};
-  --tag-species-border-color: #{lighten($tag-species-color, 15%)};
-  --tag-species-text-color: #{lighten($tag-species-color, 37%)};
-  --tag-body-type-color: #{$tag-body-type-color};
-  --tag-body-type-border-color: #{lighten($tag-body-type-color, 12%)};
-  --tag-body-type-text-color: #{lighten($tag-body-type-color, 45%)};
-  --tag-content-fanmade-color: #{$tag-content-fanmade-color};
-  --tag-content-fanmade-border-color: #{lighten($tag-content-fanmade-color, 15%)};
-  --tag-content-fanmade-text-color: #{lighten($tag-content-fanmade-color, 40%)};
-  --tag-content-official-color: #{$tag-content-official-color};
-  --tag-content-official-border-color: #{lighten($tag-content-official-color, 15%)};
-  --tag-content-official-text-color: #{lighten($tag-content-official-color, 35%)};
-  --tag-spoiler-color: #{$tag-spoiler-color};
-  --tag-spoiler-border-color: #{lighten($tag-spoiler-color, 15%)};
-  --tag-spoiler-text-color: #{lighten($tag-spoiler-color, 35%)};
+  @include type-color(success, $success-color);
+  @include type-color(warning, $warning-color);
+  @include type-color(danger, $danger-color);
+  @include type-color(information, $information-color);
+  @include type-color(purple, $purple-color);
+
+  @include tag-color(default, $tag-default-color);
+  @include tag-color(error, $tag-error-color, 37%);
+  @include tag-color(rating, $tag-rating-color, 37%);
+  @include tag-color(origin, $tag-origin-color, 42%);
+  @include tag-color(character, $tag-character-color);
+  @include tag-color(oc, $tag-oc-color, 40%);
+  @include tag-color(species, $tag-species-color, 37%);
+  @include tag-color(body-type, $tag-body-type-color, 45%, 12%);
+  @include tag-color(content-fanmade, $tag-content-fanmade-color, 40%);
+  @include tag-color(content-official, $tag-content-official-color);
+  @include tag-color(spoiler, $tag-spoiler-color);
+
+  /* Exceptions to mixin colors */
+  --tag-origin-border-color: #{lighten(desaturate($tag-origin-color, 10%), 22%)};
 }
