@@ -1,23 +1,23 @@
 @mixin if-desktop {
-  @media (min-width: $desktop-width + 1) {
+  @media (min-width: $min-desktop-width + 1) {
     @content;
   }
 }
 
 @mixin if-tablet {
-  @media (max-width: $desktop-width) and (min-width: $phone-width + 1) {
+  @media (max-width: $min-desktop-width) and (min-width: $max-phone-width + 1) {
     @content;
   }
 }
 
 @mixin if-phone {
-  @media (max-width: $phone-width) {
+  @media (max-width: $max-phone-width) {
     @content;
   }
 }
 
 @mixin if-mobile {
-  @media (max-width: $desktop-width) {
+  @media (max-width: $min-desktop-width) {
     @content;
   }
 }

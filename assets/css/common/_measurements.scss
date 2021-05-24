@@ -1,5 +1,5 @@
-$desktop-width: 1280px;
-$phone-width: 700px;
+$min-desktop-width: 1280px;
+$max-phone-width: 700px;
 
 :root {
   --padding-small: 0.5em;
@@ -22,8 +22,8 @@ $phone-width: 700px;
   --font-h5-size: 1em;
   --font-h6-size: 1em;
 
-  --desktop-width: #{$desktop-width};
-  --phone-width: #{$phone-width};
+  --min-desktop-width: #{$min-desktop-width};
+  --max-phone-width: #{$max-phone-width};
 
   --transition-animation-duration: 0.25s;
 }

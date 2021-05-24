@@ -154,7 +154,7 @@
         .block__content
           a.button href=Routes.profile_detail_path(@conn, :index, @user)
             i.fa.fa-plus>
-            | Add a mod note
+            | Edit mod notes
     = if can_index_user?(@conn) do
       .block
         .block__header Moderation Scratchpad

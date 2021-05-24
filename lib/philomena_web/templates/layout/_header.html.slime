@@ -60,45 +60,76 @@ header.header
         a.header__link.header__link-user href=Routes.profile_path(@conn, :show, @current_user)
           = render PhilomenaWeb.UserAttributionView, "_user_avatar.html", object: %{user: @current_user}, class: "avatar--navbar"
           span.header__link-user__dropdown-arrow.hidden--mobile data-click-preventdefault="true"
-        nav.dropdown__content.dropdown__content-right.hidden--mobile.js-burger-links
-          a.header__link href=Routes.profile_path(@conn, :show, @current_user)
-            = @current_user.name
-          a.header__link href="/search?q=my:watched"
-            i.fa.fa-fw.fa-eye>
-            | Watched
-          a.header__link href="/search?q=my:faves"
-            i.fa.fa-fw.fa-star>
-            | Faves
-          a.header__link href="/search?q=my:upvotes"
-            i.fa.fa-fw.fa-arrow-up>
-            | Upvotes
-          a.header__link href=Routes.gallery_path(@conn, :index, gallery: [creator: @current_user.name])
-            i.fa.fa-fw.fa-image>
-            | Galleries
-          a.header__link href="/search?q=my:uploads"
-            i.fa.fa-fw.fa-upload>
-            | Uploads
-          a.header__link href="/comments?cq=my:comments"
-            i.fa.fa-fw.fa-comments>
-            | Comments
-          a.header__link href="/posts?pq=my:posts"
-            i.fas.fa-fw.fa-pen-square>
-            | Posts
-          a.header__link href=Routes.profile_artist_link_path(@conn, :index, @current_user)
-            i.fa.fa-fw.fa-link>
-            | Links
-          a.header__link href="/settings/edit"
-            i.fa.fa-fw.fa-cogs>
-            | Settings
-          a.header__link href="/conversations"
-            i.fa.fa-fw.fa-envelope>
-            | Messages
-          a.header__link href=Routes.registration_path(@conn, :edit)
-            i.fa.fa-fw.fa-user>
-            | Account
-          a.header__link href=Routes.session_path(@conn, :delete) data-method="delete"
-            i.fa.fa-fw.fa-sign-out-alt>
-            | Logout
+        nav.dropdown__content.dropdown__content--right.hidden--mobile.js-burger-links
+          a href=Routes.profile_path(@conn, :show, @current_user)
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-user
+              .dropdown__text
+                = @current_user.name
+          hr.dropdown__separator
+          a href="/search?q=my:watched"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-eye
+              .dropdown__text Watched
+          a href="/search?q=my:faves"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-star
+              .dropdown__text Faves
+          a href="/search?q=my:upvotes"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-arrow-up
+              .dropdown__text Upvotes
+          a href=Routes.gallery_path(@conn, :index, gallery: [creator: @current_user.name])
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-image
+              .dropdown__text Galleries
+          a href="/search?q=my:uploads"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-upload
+              .dropdown__text Uploads
+          a href="/comments?cq=my:comments"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-comments
+              .dropdown__text Comments
+          a href="/posts?pq=my:posts"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-pen-square
+              .dropdown__text Posts
+          a href=Routes.profile_artist_link_path(@conn, :index, @current_user)
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-link
+              .dropdown__text Links
+          a href="/conversations"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-envelope
+              .dropdown__text Messages
+          hr.dropdown__separator
+          a href="/settings/edit"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-cogs
+              .dropdown__text Settings
+          a href=Routes.registration_path(@conn, :edit)
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-user
+              .dropdown__text Account
+          hr.dropdown__separator
+          a href=Routes.session_path(@conn, :delete) data-method="delete"
+            .dropdown__item
+              .dropdown__icon
+                i.fa.fa-fw.fa-sign-out-alt
+              .dropdown__text Logout
     - else
       a.header__link.hidden--mobile href="/filters"
         | Filters (

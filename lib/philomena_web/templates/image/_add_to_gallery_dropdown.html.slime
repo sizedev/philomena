@@ -4,7 +4,7 @@
     span.hidden--tablet.hidden--mobile Galleries
     span data-click-preventdefault="true"
       i.fa.fa-caret-down>
-  .dropdown__content.dropdown__content-right
+  .dropdown__content.dropdown__content--right
     .block
       .block__content.add-to-gallery-list
         .block__list

@@ -47,7 +47,7 @@ $tag-spoiler-color: #4f3811;
 
   --accent-color: #{$accent-color};
   --accent-border-color: #{lighten($accent-color, 20%)};
-  --accent-muted-color: #{darken(desaturate($accent-color, 10%), 15%)};
+  --accent-muted-color: #{darken(desaturate($accent-color, 10%), 10%)};
   --accent-dark-color: #{darken(desaturate($accent-color, 5%), 15%)};
   --accent-text-color: #{lighten(saturate($accent-color, 10%), 25%)};
   --accent-text-muted-color: #{lighten(desaturate($accent-color, 15%), 25%)};
