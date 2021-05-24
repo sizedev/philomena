@@ -44,6 +44,10 @@
   padding: var(--padding-normal);
 }
 
+.block__tab {
+  padding: var(--padding-normal);
+}
+
 @include block-type(success);
 @include block-type(warning);
 @include block-type(danger);
