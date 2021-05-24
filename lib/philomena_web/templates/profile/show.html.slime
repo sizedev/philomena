@@ -147,17 +147,16 @@
         .block__header
           i.fa.fa-sticky-note
           | Mod Notes
-        .block__content
-          table.table
-            thead
+        table.table
+          thead
+            tr
+              th Note
+              th Created
+          tbody
+            = for {body, mod_note} <- @mod_notes do
               tr
-                th Note
-                th Created
-            tbody
-              = for {body, mod_note} <- @mod_notes do
-                tr
-                  td == body
-                  td = pretty_time(mod_note.created_at)
+                td == body
+                td = pretty_time(mod_note.created_at)
         .block__content
           a.button href=Routes.profile_detail_path(@conn, :index, @user)
             i.fa.fa-plus>
