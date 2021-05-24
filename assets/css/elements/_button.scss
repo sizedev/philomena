@@ -6,10 +6,16 @@
       background: var(--#{$type}-color) !important;
       box-shadow: 0 -1px var(--#{$type}-dark-color) inset;
     }
+
+    &.button:hover {
+      background: var(--#{$type}-dark-color) !important;
+    }
   }
 }
 
 .button {
+  display: block;
+  width: fit-content;
   font-weight: bold;
   background: var(--background-color);
   color: var(--text-color) !important;
@@ -17,6 +23,7 @@
   padding: var(--padding-small);
   border: 1px solid var(--primary-border-color);
   border-radius: var(--border-radius);
+  box-sizing: border-box;
 
   &:hover {
     background: var(--primary-dark-color);

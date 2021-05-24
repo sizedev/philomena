@@ -50,9 +50,10 @@
     = link @forced.name, to: Routes.filter_path(@conn, :show, @forced)
 
 = if (current?(@user, @conn.assigns.current_user) or can?(@conn, :index, Philomena.Bans.User)) and Enum.any?(@bans) do
-  .block
+  .block.block--warning
     .block__header
-      ' Ban History
+      i.fa.fa-ban
+      | Ban History
     .block__content
       = render PhilomenaWeb.BanView, "_bans.html", bans: @bans, conn: @conn
 
@@ -60,12 +61,14 @@
   .column-layout__left
     .block
       .block__header
-        span.block__header__title Commissions
+        i.fa.fa-briefcase
+        | Commissions
       = render PhilomenaWeb.ProfileView, "_commission.html", user: @user, commission_information: @commission_information, conn: @conn
 
     .block
       .block__header
-        span.block__header__title Artist Links
+        i.fa.fa-link
+        | Artist Links
 
       = for link <- @user.verified_links, should_see_link?(@conn, @user, link) do
         - watchers = if link.tag, do: @watcher_counts[link.tag.id] || 0, else: 0
@@ -106,7 +109,8 @@
             | Create an Artist Link
     .block
       .block__header
-        span.block__header__title Badges
+        i.fa.fa-award
+        | Badges
       = for award <- award_order(@user.awards) do
         .block__content.flex.flex--centered.flex--center-distributed.alternating-color.no-overflow title=award.label
           .flex__grow.center
@@ -133,13 +137,16 @@
 
     .block
       .block__header
-        span.block__header__title About Me
+        i.fa.fa-question
+        | About Me
 
       = render PhilomenaWeb.ProfileView, "_about_me.html", user: @user, about_me: @about_me, conn: @conn
 
     = if can_read_mod_notes?(@conn) and not hide_staff_tools?(@conn) do
-      .block
-        .block__header Mod Notes
+      .block.block--warning
+        .block__header
+          i.fa.fa-sticky-note
+          | Mod Notes
         .block__content
           table.table
             thead
@@ -156,8 +163,10 @@
             i.fa.fa-plus>
             | Edit mod notes
     = if can_index_user?(@conn) do
-      .block
-        .block__header Moderation Scratchpad
+      .block.block--warning
+        .block__header
+          i.fa.fa-clipboard
+          | Moderation Scratchpad
         .block__content.profile-about
           == @scratchpad
         .block__content

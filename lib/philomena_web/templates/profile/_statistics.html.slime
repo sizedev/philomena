@@ -1,5 +1,7 @@
 .block
-  .block__header: span.block__header__title Statistics
+  .block__header
+    i.fa.fa-table
+    | Statistics
   .block__content
     table.table.table--stats.center
       tr

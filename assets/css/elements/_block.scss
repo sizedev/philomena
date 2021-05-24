@@ -24,11 +24,15 @@
 }
 
 .block__header {
-  line-height: var(--padding-large);
+  line-height: var(--block-header-height);
   padding: 0 var(--padding-normal);
   background: var(--primary-muted-color);
   box-shadow: 0 -1px var(--primary-dark-color) inset;
   border-bottom: 1px solid var(--primary-border-color);
+
+  & > .fa {
+    margin-right: var(--padding-normal);
+  }
 }
 
 .block__header--single-item {

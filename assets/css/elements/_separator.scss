@@ -1,0 +1,21 @@
+@mixin separator-type($type) {
+  .separator--#{$type} {
+    border-color: var(--#{$type}-border-color);
+  }
+}
+
+.separator {
+  margin: var(--padding-normal) 0;
+}
+
+.separator--thin {
+  margin: var(--padding-small) 0;
+}
+
+@include separator-type(primary);
+@include separator-type(secondary);
+@include separator-type(success);
+@include separator-type(warning);
+@include separator-type(danger);
+@include separator-type(information);
+@include separator-type(purple);
