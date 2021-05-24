@@ -5,7 +5,7 @@
   background: var(--secondary-dark-color);
   color: var(--text-color);
   box-sizing: border-box;
-  font-family: Droid Sans Mono, monospace;
+  font-family: var(--font-family-monospace);
 
   &::placeholder {
     color: var(--secondary-border-color);

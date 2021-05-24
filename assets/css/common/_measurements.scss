@@ -1,6 +1,9 @@
 $min-desktop-width: 1280px;
 $max-phone-width: 700px;
 
+$font-family-base: verdana, arial, helvetica, sans-serif;
+$font-family-monospace: "Droid Sans Mono", monospace;
+
 :root {
   --padding-small: 0.5em;
   --padding-normal: 1em;
@@ -15,6 +18,9 @@ $max-phone-width: 700px;
   --column-left-width: 326px;
 
   --border-radius: 4px;
+
+  --font-family: #{$font-family-base};
+  --font-family-monospace: #{$font-family-monospace};
 
   --font-size: 14px;
   --font-header-size: 16px;
