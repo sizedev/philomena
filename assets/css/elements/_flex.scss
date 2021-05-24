@@ -1,64 +1,64 @@
 .flex {
   display: flex;
+}
 
-  &--centered {
-    align-items: center;
-  }
+.flex--centered {
+  align-items: center;
+}
 
-  &--center-distributed {
-    justify-content: center;
-  }
+.flex--center-distributed {
+  justify-content: center;
+}
 
-  &--no-wrap {
+.flex--no-wrap {
+  flex-wrap: nowrap;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
+}
+
+.flex__right {
+  flex: 1 1 auto;
+  text-align: right;
+}
+
+.flex__grow {
+  flex: 1 0 0;
+}
+
+.flex__shrink {
+  flex: 0 1 auto;
+}
+
+.flex__fixed {
+  flex: 0 0 auto;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.flex--spaced-out {
+  justify-content: space-between;
+}
+
+.flex--start-bunched {
+  justify-content: flex-start;
+}
+
+.flex--end-bunched {
+  justify-content: flex-end;
+}
+
+@include if-desktop {
+  .flex--maybe-wrap {
     flex-wrap: nowrap;
   }
+}
 
-  &--wrap {
+@include if-mobile {
+  .flex--maybe-wrap {
     flex-wrap: wrap;
-  }
-  
-  &__right {
-    flex: 1 1 auto;
-    text-align: right;
-  }
-  
-  &__grow {
-    flex: 1 0 0;
-  }
-  
-  &__shrink {
-    flex: 0 1 auto;
-  }
-  
-  &__fixed {
-    flex: 0 0 auto;
-  }
-  
-  &--column {
-    flex-direction: column;
-  }
-  
-  &--spaced-out {
-    justify-content: space-between;
-  }
-
-  &--start-bunched {
-    justify-content: flex-start;
-  }
-
-  &--end-bunched {
-    justify-content: flex-end;
-  }
-
-  @include if-desktop {
-    &--maybe-wrap {
-      flex-wrap: nowrap;
-    }
-  }
-
-  @include if-mobile {
-    &--maybe-wrap {
-      flex-wrap: wrap;
-    }
   }
 }

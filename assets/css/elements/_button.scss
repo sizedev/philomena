@@ -22,19 +22,19 @@
     background: var(--primary-dark-color);
     transition: background var(--transition-animation-duration) ease;
   }
+}
 
-  &--important {
-    background: var(--primary-color);
-    box-shadow: 0 -1px var(--primary-dark-color) inset;
-  }
+.button--important {
+  background: var(--primary-color);
+  box-shadow: 0 -1px var(--primary-dark-color) inset;
+}
 
-  &__row {
-    display: flex;
-    flex-direction: row;
+.button__row {
+  display: flex;
+  flex-direction: row;
 
-    & > button {
-      margin-right: var(--padding-small);
-    }
+  & > button {
+    margin-right: var(--padding-small);
   }
 }
 

@@ -19,14 +19,14 @@
   grid-template-columns: auto 1fr;
   margin: var(--padding-normal);
   margin-bottom: 0;
+}
 
-  &__icon {
-    padding: var(--padding-normal);
-  }
+.flash__icon {
+  padding: var(--padding-normal);
+}
 
-  &__message {
-    padding: var(--padding-normal);
-  }
+.flash__message {
+  padding: var(--padding-normal);
 }
 
 @include flash-type(success);
