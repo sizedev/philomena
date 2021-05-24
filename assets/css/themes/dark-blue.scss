@@ -2,7 +2,7 @@ $background-color: #131a22;
 $text-color: #e0e0e0;
 
 $primary-color: #2e4c80;
-$secondary-color: #45536e;
+$secondary-color: #434f69;
 $danger-color: #57261f;
 $warning-color: #5c472a;
 $success-color: #255339;
@@ -50,11 +50,10 @@ $tag-spoiler-color: #4f3811;
   --primary-border-color: #{lighten($primary-color, 20%)};
   --primary-muted-color: #{darken(desaturate($primary-color, 10%), 10%)};
   --primary-dark-color: #{darken(desaturate($primary-color, 5%), 15%)};
-  --primary-text-color: #{lighten(desaturate($primary-color, 5%), 25%)};
-  --primary-text-muted-color: #{lighten(desaturate($primary-color, 15%), 20%)};
 
   --secondary-color: #{$secondary-color};
   --secondary-border-color: #{lighten($secondary-color, 20%)};
+  --secondary-muted-color: #{darken(desaturate($secondary-color, 5%), 10%)};
   --secondary-dark-color: #{darken($secondary-color, 15%)};
 
   --upvote-color: #{$upvote-color};

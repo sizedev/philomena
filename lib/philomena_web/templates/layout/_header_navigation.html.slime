@@ -1,6 +1,7 @@
 .flex.flex--row.hidden--mobile
   .dropdown.header__dropdown
     a.header__link href="/images"
+      i.fa.fa-image
       | Images
       span data-click-preventdefault="true"
         i.fa.fa-caret-down<
@@ -12,6 +13,7 @@
           .dropdown__text Random
   .dropdown.header__dropdown
     a.header__link href="/activity"
+      i.fa.fa-bullhorn
       | Activity
       span data-click-preventdefault="true"
         i.fa.fa-caret-down<
@@ -23,6 +25,7 @@
           .dropdown__text Comments
   .dropdown.header__dropdown
     a.header__link href="/forums"
+      i.fa.fa-comments
       | Forums
       span data-click-preventdefault="true"
         i.fa.fa-caret-down<
@@ -38,13 +41,17 @@
             i.fa.fa-fw.fa-search
           .dropdown__text Post Search
   a.header__link href="/tags"
+    i.fa.fa-tag
     | Tags
   a.header__link href="/channels"
+    i.fa.fa-stream
     ' Live
     span.header__counter
       = @conn.assigns.live_channels
 
   a.header__link href="/galleries"
+    i.fa.fa-images
     | Galleries
   a.header__link href="/commissions"
+    i.fa.fa-briefcase
     | Commissions

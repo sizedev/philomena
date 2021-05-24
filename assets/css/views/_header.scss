@@ -4,11 +4,26 @@
   padding: 0 var(--padding-normal);
   border-bottom: 1px solid var(--primary-border-color);
   box-shadow: 0 1px var(--primary-muted-color) inset, 0 -1px var(--primary-dark-color) inset;
+  font-size: var(--font-header-size);
 }
 
 .header--secondary {
-  background: var(--primary-muted-color);
+  background: var(--secondary-dark-color);
+  border-color: var(--secondary-color);
   line-height: var(--navbar-secondary-size);
+
+  .header__link {
+    border-right-color: var(--secondary-color);
+    border-left-color: var(--secondary-dark-color);
+
+    & > .fa {
+      margin-right: var(--padding-small);
+    }
+
+    &:hover {
+      background: var(--secondary-muted-color);
+    }
+  }
 }
 
 .header__spacer {
