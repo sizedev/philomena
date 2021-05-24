@@ -15,7 +15,7 @@
 }
 
 .block {
-  border: 1px solid var(--accent-border-color);
+  border: 1px solid var(--primary-border-color);
   margin-bottom: var(--padding-small);
 }
 
@@ -26,9 +26,9 @@
 .block__header {
   line-height: var(--padding-large);
   padding: 0 var(--padding-normal);
-  background: var(--accent-muted-color);
-  box-shadow: 0 -1px var(--accent-dark-color) inset;
-  border-bottom: 1px solid var(--accent-border-color);
+  background: var(--primary-muted-color);
+  box-shadow: 0 -1px var(--primary-dark-color) inset;
+  border-bottom: 1px solid var(--primary-border-color);
 }
 
 .block__header--single-item {

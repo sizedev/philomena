@@ -53,11 +53,11 @@
   }
 
   &__dropdown__link {
-    background-color: var(--accent-muted-color);
+    background-color: var(--primary-muted-color);
     padding: 0 var(--padding-small);
 
     &:hover {
-      background-color: var(--accent-dark-color);
+      background-color: var(--primary-dark-color);
     }
   }
 

@@ -15,17 +15,17 @@
   color: var(--text-color) !important;
   font-size: var(--padding-normal);
   padding: var(--padding-small);
-  border: 1px solid var(--accent-border-color);
+  border: 1px solid var(--primary-border-color);
   border-radius: var(--border-radius);
 
   &:hover {
-    background: var(--accent-dark-color);
+    background: var(--primary-dark-color);
     transition: background var(--transition-animation-duration) ease;
   }
 
   &--important {
-    background: var(--accent-color);
-    box-shadow: 0 -1px var(--accent-dark-color) inset;
+    background: var(--primary-color);
+    box-shadow: 0 -1px var(--primary-dark-color) inset;
   }
 
   &__row {
