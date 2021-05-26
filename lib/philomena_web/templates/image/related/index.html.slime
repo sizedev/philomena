@@ -6,6 +6,6 @@
         | #
         = @image.id
 
-  .block__content.js-resizable-media-container
+  .block__content.media-list
     = for image <- @images do
       = render PhilomenaWeb.ImageView, "_image_box.html", image: image, link: Routes.image_path(@conn, :show, image), size: :thumb, conn: @conn

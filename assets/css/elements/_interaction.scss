@@ -1,0 +1,11 @@
+@mixin interaction-type($type) {
+  .interaction--#{$type} {
+    color: var(--#{$type}-color) !important;
+  }
+}
+
+@include interaction-type(fave);
+@include interaction-type(upvote);
+@include interaction-type(downvote);
+@include interaction-type(comment);
+@include interaction-type(hide);

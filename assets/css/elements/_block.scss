@@ -23,6 +23,12 @@
   padding: var(--padding-normal);
 }
 
+@include if-phone {
+  .block__content {
+    padding: var(--padding-small);
+  }
+}
+
 .block__header {
   line-height: var(--block-header-height);
   padding: 0 var(--padding-normal);

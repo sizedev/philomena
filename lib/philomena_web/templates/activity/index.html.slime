@@ -49,6 +49,6 @@
             i.fa.fa-eye>
             span.hidden--mobile
               ' Browse Watched Images
-        .block__content.js-resizable-media-container
+        .block__content.media-list
           = for image <- @watched do
             = render PhilomenaWeb.ImageView, "_image_box.html", image: image, link: Routes.image_path(@conn, :show, image, q: "my:watched"), size: :thumb_small, conn: @conn

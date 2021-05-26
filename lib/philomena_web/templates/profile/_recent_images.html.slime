@@ -3,7 +3,7 @@
     .block__header
       span.block__header__title = @title
 
-    .block__content.js-resizable-media-container
+    .block__content.media-list
       = for image <- @images do
         = render PhilomenaWeb.ImageView, "_image_box.html", image: image, size: :thumb, conn: @conn
       = if assigns[:view_all_path] do

@@ -19,6 +19,10 @@ $font-family-monospace: "Droid Sans Mono", monospace;
 
   --border-radius: 4px;
 
+  --media-container-width: 225px;
+  --media-small-container-width: 125px;
+  --media-header-height: 24px;
+
   --font-family: #{$font-family-base};
   --font-family-monospace: #{$font-family-monospace};
 
