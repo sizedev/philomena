@@ -21,6 +21,13 @@
   margin-bottom: 0;
 }
 
+@include if-phone {
+  .flash {
+    margin: var(--padding-small);
+    margin-bottom: 0;
+  }
+}
+
 .flash__icon {
   padding: var(--padding-normal);
 }
