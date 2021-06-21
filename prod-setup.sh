@@ -1,7 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Set up environment
-source ~/bin/philomena-env
+source ~/bin/philomena-env \
+|| die "Failed to set up environment"
 
 echo "Setting up"
 
