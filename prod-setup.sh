@@ -15,7 +15,7 @@ cd ~/philomena
 
 # Distro requirements
 # Debian
-#   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev libavformat-dev libswscale-dev
+#   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev libavformat-dev libswscale-dev redis-server
 # Alpine Linux
 #   apk add inotify-tools build-base git ffmpeg ffmpeg-dev npm nodejs file-dev libpng-dev gifsicle optipng libjpeg-turbo-utils librsvg imagemagick postgresql-client wget
 echo Installing requirements
@@ -59,9 +59,9 @@ cd ~/philomena \
 echo
 echo Installing database
 # Delete database if necessary
-#   psql -d template1 -c 'DROP DATABASE swbooru'
+psql -d postgres -c 'DROP DATABASE swbooru'
 # Try to create the database if it doesn't exist yet
 PGHOST=$DATABASE_HOST PGUSER=$DATABASE_USER PGPASSWORD=$DATABASE_PW createdb $DATABASE_DB \
 && mix ecto.setup \
-&& mix reindex_all \
+&& mix reindex_all --i-know-what-im-doing \
 || die "Failed to install database"
