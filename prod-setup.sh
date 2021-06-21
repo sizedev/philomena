@@ -1,5 +1,17 @@
 #!/usr/bin/env sh
 
+# Set up environment
+source ~/bin/philomena-env
+
+echo "Setting up"
+
+cd ~/philomena
+
+die() {
+    echo "$*" 1>&2
+    exit 1
+}
+
 # Distro requirements
 # Debian
 #   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev libavformat-dev libswscale-dev
@@ -15,31 +27,39 @@ mix local.rebar --force
 
 echo
 echo Installing cli_intensities
-rm -rf /tmp/cli_intensities
-git clone https://github.com/philomena-dev/cli_intensities /tmp/cli_intensities \
+rm -rf /tmp/cli_intensities \
+&& git clone https://github.com/philomena-dev/cli_intensities /tmp/cli_intensities \
 && cd /tmp/cli_intensities \
-&& PREFIX=~ make -j$(nproc) install
+&& PREFIX=~ make -j$(nproc) install \
+|| die "Failed to install cli_intensities"
 
 echo
 echo Installing mediatools
 rm -rf /tmp/mediatools
 git clone https://github.com/philomena-dev/mediatools /tmp/mediatools \
 && cd /tmp/mediatools \
-&& PREFIX=~ make -j$(nproc) install
+&& PREFIX=~ make -j$(nproc) install \
+|| die "Failed to install mediatools"
 
 # Always install assets
 echo
 echo Installing assets
-cd ~/philomena/assets
-npm install
+cd ~/philomena/assets \
+&& npm install \
+|| die "Failed to install assets"
 
 # Always install mix dependencies
 echo
 echo Installing mix deps
-cd ~/philomena
-mix deps.get
+cd ~/philomena \
+&& mix deps.get \
+|| die "Failed to install mix dependencies"
 
 echo
 echo Installing database
+# psql -d template1 -c 'DROP DATABASE swbooru'
 # Try to create the database if it doesn't exist yet
-createdb swbooru && mix ecto.setup && mix reindex_all
+createdb swbooru \
+&& mix ecto.setup \
+&& mix reindex_all \
+|| die "Failed to install database"
