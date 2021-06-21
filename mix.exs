@@ -90,7 +90,11 @@ defmodule Philomena.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "ecto.setup": ["ecto.create", "ecto.load", "run priv/repo/seeds.exs"],
+      "ecto.setup": [
+        "ecto.create",
+        "ecto.load",
+        "run priv/repo/seeds.exs"
+      ],
       "ecto.setup_dev": [
         "ecto.create",
         "ecto.load",
