@@ -65,4 +65,3 @@ createdb -h $DATABASE_HOST $DATABASE_DB -U $DATABASE_USER \
 && mix ecto.setup \
 && mix reindex_all \
 || die "Failed to install database"
-createdb -h postgres -U postgres philomena_dev && mix ecto.setup_dev && mix reindex_all
