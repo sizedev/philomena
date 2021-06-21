@@ -58,7 +58,8 @@ cd ~/philomena \
 
 echo
 echo Installing database
-# psql -d template1 -c 'DROP DATABASE swbooru'
+# Delete database if necessary
+#   psql -d template1 -c 'DROP DATABASE swbooru'
 # Try to create the database if it doesn't exist yet
 createdb swbooru \
 && mix ecto.setup \
