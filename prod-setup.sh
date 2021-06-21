@@ -61,7 +61,7 @@ echo Installing database
 # Delete database if necessary
 #   psql -d template1 -c 'DROP DATABASE swbooru'
 # Try to create the database if it doesn't exist yet
-createdb -h $DATABASE_HOST $DATABASE_DB -U $DATABASE_USER \
+PGHOST=$DATABASE_HOST PGUSER=$DATABASE_USER PGPASSWORD=$DATABASE_PW createdb $DATABASE_DB \
 && mix ecto.setup \
 && mix reindex_all \
 || die "Failed to install database"
