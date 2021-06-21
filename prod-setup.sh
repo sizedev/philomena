@@ -1,3 +1,11 @@
+# Distro requirements
+# Debian
+#   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev
+# Alpine Linux
+#   apk add inotify-tools build-base git ffmpeg ffmpeg-dev npm nodejs file-dev libpng-dev gifsicle optipng libjpeg-turbo-utils librsvg imagemagick postgresql-client wget
+mix local.hex --force
+mix local.rebar --force
+
 #!/usr/bin/env sh
 rm -rf /tmp/cli_intensities
 git clone https://github.com/philomena-dev/cli_intensities /tmp/cli_intensities \
