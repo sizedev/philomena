@@ -1,3 +1,8 @@
+#!/usr/bin/env bash
+
+# Set up environment
+source ~/bin/philomena-env
+
 # Sleep to allow Elasticsearch to finish initializing
 # if it's not done doing whatever it does yet
 echo -n "Waiting for Elasticsearch"
