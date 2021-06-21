@@ -7,8 +7,8 @@ mix local.hex --force
 mix local.rebar --force
 
 # PostgreSQL server setup
-# sudo -u postgres createuser swbooru
-
+#   sudo -u postgres createuser swbooru
+#   sudo -u postgres psql -c "ALTER USER swbooru CREATEDB"
 
 #!/usr/bin/env sh
 rm -rf /tmp/cli_intensities
@@ -28,4 +28,4 @@ git clone https://github.com/philomena-dev/mediatools /tmp/mediatools \
 (cd ~/philomena && mix deps.get)
 
 # Try to create the database if it doesn't exist yet
-createdb -h localhost swbooru && mix ecto.setup && mix reindex_all
+createdb swbooru && mix ecto.setup && mix reindex_all
