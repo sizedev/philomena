@@ -12,7 +12,7 @@ git clone https://github.com/philomena-dev/cli_intensities /tmp/cli_intensities 
 && cd /tmp/cli_intensities \
 && PREFIX=~ make -j$(nproc) install
 
-rm -rf /tmp/cli_intensities
+rm -rf /tmp/mediatools
 git clone https://github.com/philomena-dev/mediatools /tmp/mediatools \
 && cd /tmp/mediatools \
 && PREFIX=~ make -j$(nproc) install
