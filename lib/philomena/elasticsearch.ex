@@ -176,7 +176,7 @@ defmodule Philomena.Elasticsearch do
     Logger.emergency("[Elasticsearch] search() begins")
     index = index_for(module)
 
-    {:ok, %{body: results, status_code: 200}} =
+    tmp = {:ok, %{body: results, status_code: 200}} =
       Elastix.Search.search(
         elastic_url(),
         index.index_name(),
@@ -184,7 +184,7 @@ defmodule Philomena.Elasticsearch do
         query_body
       )
     Logger.emergency("[Elasticsearch] search() ends")
-    Logger.emergency("[Elasticsearch] RESULT: #{inspect(results)}")
+    Logger.emergency("[Elasticsearch] RESULT: #{inspect(tmp)}")
 
     results
   end
@@ -199,7 +199,7 @@ defmodule Philomena.Elasticsearch do
         ]
       end)
 
-    {:ok, %{body: results, status_code: 200}} =
+    tmp = {:ok, %{body: results, status_code: 200}} =
       Elastix.Search.search(
         elastic_url(),
         "_all",
@@ -207,7 +207,7 @@ defmodule Philomena.Elasticsearch do
         msearch_body
       )
     Logger.emergency("[Elasticsearch] msearch() ends")
-    Logger.emergency("[Elasticsearch] RESULT: #{inspect(results)}")
+    Logger.emergency("[Elasticsearch] RESULT: #{inspect(tmp)}")
 
     results["responses"]
   end
