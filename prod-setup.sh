@@ -22,10 +22,12 @@ git clone https://github.com/philomena-dev/mediatools /tmp/mediatools \
 && PREFIX=~ make -j$(nproc) install
 
 # Always install assets
-(cd ~/philomena/assets && npm install)
+cd ~/philomena/assets
+npm install
 
 # Always install mix dependencies
-(cd ~/philomena && mix deps.get)
+cd ~/philomena
+mix deps.get
 
 # Try to create the database if it doesn't exist yet
 createdb swbooru && mix ecto.setup && mix reindex_all
