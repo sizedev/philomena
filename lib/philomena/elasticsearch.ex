@@ -173,6 +173,7 @@ defmodule Philomena.Elasticsearch do
   end
 
   def search(module, query_body) do
+    Logger.debug("[Elasticsearch] search() begins")
     index = index_for(module)
 
     {:ok, %{body: results, status_code: 200}} =
@@ -182,11 +183,13 @@ defmodule Philomena.Elasticsearch do
         [],
         query_body
       )
+    Logger.debug("[Elasticsearch] search() ends")
 
     results
   end
 
   def msearch(definitions) do
+    Logger.debug("[Elasticsearch] msearch() begins")
     msearch_body =
       Enum.flat_map(definitions, fn def ->
         [
@@ -202,6 +205,7 @@ defmodule Philomena.Elasticsearch do
         [],
         msearch_body
       )
+    Logger.debug("[Elasticsearch] msearch() ends")
 
     results["responses"]
   end
