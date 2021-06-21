@@ -6,6 +6,10 @@
 mix local.hex --force
 mix local.rebar --force
 
+# PostgreSQL server setup
+# sudo -u postgres createuser swbooru
+
+
 #!/usr/bin/env sh
 rm -rf /tmp/cli_intensities
 git clone https://github.com/philomena-dev/cli_intensities /tmp/cli_intensities \
