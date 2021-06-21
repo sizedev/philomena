@@ -184,6 +184,7 @@ defmodule Philomena.Elasticsearch do
         query_body
       )
     Logger.emergency("[Elasticsearch] search() ends")
+    Logger.emergency("[Elasticsearch] RESULT: #{inspect(results)}")
 
     results
   end
