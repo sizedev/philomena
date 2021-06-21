@@ -1,6 +1,6 @@
 # Distro requirements
 # Debian
-#   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev
+#   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev libavformat-dev libswscale-dev
 # Alpine Linux
 #   apk add inotify-tools build-base git ffmpeg ffmpeg-dev npm nodejs file-dev libpng-dev gifsicle optipng libjpeg-turbo-utils librsvg imagemagick postgresql-client wget
 mix local.hex --force
@@ -24,4 +24,4 @@ git clone https://github.com/philomena-dev/mediatools /tmp/mediatools \
 (cd ~/philomena && mix deps.get)
 
 # Try to create the database if it doesn't exist yet
-createdb -h postgres -U postgres philomena && mix ecto.setup && mix reindex_all
+createdb -h localhost -U postgres philomena && mix ecto.setup && mix reindex_all
