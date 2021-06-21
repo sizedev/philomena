@@ -2,7 +2,7 @@
 # if it's not done doing whatever it does yet
 echo -n "Waiting for Elasticsearch"
 
-until wget -qO - elasticsearch:9200; do
+until wget -qO - $ELASTICSEARCH_URL; do
   echo -n "."
   sleep 2
 done

@@ -15,7 +15,7 @@ cd ~/philomena
 
 # Distro requirements
 # Debian
-#   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev libavformat-dev libswscale-dev redis-server
+#   sudo apt-get install -y postgresql postgresql-client libpng-dev libmagic-dev libavformat-dev libswscale-dev redis-server elasticsearch
 # Alpine Linux
 #   apk add inotify-tools build-base git ffmpeg ffmpeg-dev npm nodejs file-dev libpng-dev gifsicle optipng libjpeg-turbo-utils librsvg imagemagick postgresql-client wget
 echo Installing requirements
