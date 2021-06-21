@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+die() {
+    echo "$*" 1>&2
+    exit 1
+}
+
 # Set up environment
 source ~/bin/philomena-env \
 || die "Failed to set up environment"
@@ -7,11 +12,6 @@ source ~/bin/philomena-env \
 echo "Setting up"
 
 cd ~/philomena
-
-die() {
-    echo "$*" 1>&2
-    exit 1
-}
 
 # Distro requirements
 # Debian
