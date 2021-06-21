@@ -24,4 +24,4 @@ git clone https://github.com/philomena-dev/mediatools /tmp/mediatools \
 (cd ~/philomena && mix deps.get)
 
 # Try to create the database if it doesn't exist yet
-createdb -h localhost -U postgres philomena && mix ecto.setup && mix reindex_all
+createdb -h localhost swbooru && mix ecto.setup && mix reindex_all
