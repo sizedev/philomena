@@ -7,7 +7,7 @@ source ~/bin/philomena-env
 # if it's not done doing whatever it does yet
 echo -n "Waiting for Elasticsearch"
 
-until wget -qO- $ELASTICSEARCH_URL; do
+until wget -qO- $ELASTICSEARCH_URL > /dev/null; do
   echo -n "."
   sleep 2
 done
