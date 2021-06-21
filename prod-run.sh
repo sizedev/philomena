@@ -12,6 +12,8 @@ until wget -qO- $ELASTICSEARCH_URL > /dev/null; do
   sleep 2
 done
 
+echo -n "Elasticsearch ready"
+
 echo
 
 background() {
@@ -24,8 +26,12 @@ background() {
   done
 }
 
+echo -n "Starting background jobs"
+
 # Run background jobs
 background &
+
+echo -n "Starting booru app"
 
 # Run the application
 START_WORKER=true exec mix phx.server
