@@ -208,14 +208,15 @@ defmodule Philomena.Elasticsearch do
         [],
         msearch_body
       )
-    Logger.emergency("[Elasticsearch] msearch() ends")
-    Logger.emergency("[Elasticsearch] RESPONSE: #{inspect(response)}")
-    Logger.emergency("[Elasticsearch] RESULTS: #{inspect(results)}")
 
     mresults = Enum.map(response["responses"], fn res ->
       {:ok, %{body: results, status_code: 200}} = res
       results
     end)
+
+    Logger.emergency("[Elasticsearch] msearch() ends")
+    Logger.emergency("[Elasticsearch] RESPONSE: #{inspect(response)}")
+    Logger.emergency("[Elasticsearch] RESULTS: #{inspect(mresults)}")
 
     mresults
   end
