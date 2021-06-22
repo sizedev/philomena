@@ -208,7 +208,7 @@ defmodule Philomena.Elasticsearch do
       %{status: 200} = res
     end)
 
-    mresults
+    responses
   end
 
   def search_definition(module, elastic_query, pagination_params \\ %{}) do
