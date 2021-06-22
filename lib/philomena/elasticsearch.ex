@@ -201,7 +201,7 @@ defmodule Philomena.Elasticsearch do
       end)
     Logger.emergency("[Elasticsearch] RESPONSE: #{inspect(msearch_body)}")
 
-    response = {:ok, %{body: results, status_code: 200}} =
+    {:ok, %{body: response, status_code: 200}} =
       Elastix.Search.search(
         elastic_url(),
         "_all",
@@ -212,7 +212,12 @@ defmodule Philomena.Elasticsearch do
     Logger.emergency("[Elasticsearch] RESPONSE: #{inspect(response)}")
     Logger.emergency("[Elasticsearch] RESULTS: #{inspect(results)}")
 
-    results["responses"]
+    mresults = Enum.map(response["responses"], fn res ->
+      {:ok, %{body: results, status_code: 200}} = res
+      results
+    end)
+
+    mresults
   end
 
   def search_definition(module, elastic_query, pagination_params \\ %{}) do
