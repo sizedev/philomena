@@ -28,7 +28,7 @@ background() {
 echo "Starting background jobs"
 
 # Run background jobs
-background &
+# background &
 
 echo "Starting booru app"
 
