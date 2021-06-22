@@ -79,9 +79,9 @@ $success_color: lighten($success_light_color, 4%);
 $danger_color: lighten($danger_light_color, 5%);
 $warning_color: lighten($warning_light_color, 6%);
 
-$header_hover_color: darken($header_color, 8%);
+$header_hover_color: #282B2E; // Done
 $header_field_hover_color: darken($header_hover_color, 4%);
-$header_secondary_hover_color: darken($header_secondary_color, 4%);
+$header_secondary_hover_color: #34373C; // Done
 
 $header_admin_hover_color: darken($header_admin_color, 5%);
 
