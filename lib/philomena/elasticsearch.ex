@@ -199,8 +199,9 @@ defmodule Philomena.Elasticsearch do
           def.body
         ]
       end)
+    Logger.emergency("[Elasticsearch] RESPONSE: #{inspect(msearch_body)}")
 
-      response = {:ok, %{body: results, status_code: 200}} =
+    response = {:ok, %{body: results, status_code: 200}} =
       Elastix.Search.search(
         elastic_url(),
         "_all",
@@ -209,7 +210,7 @@ defmodule Philomena.Elasticsearch do
       )
     Logger.emergency("[Elasticsearch] msearch() ends")
     Logger.emergency("[Elasticsearch] RESPONSE: #{inspect(response)}")
-    Logger.emergency("[Elasticsearch] RESULTS: #{inspect(results)}")
+    Logger.emergency("[Elasticsearch] RESULTS: #{inspect(results[])}")
 
     results["responses"]
   end
