@@ -71,7 +71,7 @@ $image_overlay_background_color: #000000;
 
 $text_light_color: $foreground_color;
 
-$meta_color: mix($foreground_color, $background_color, 5%);
+// $meta_color: mix($foreground_color, $background_color, 5%);
 $meta_border_color: mix($foreground_color, $meta_color, 30%);
 
 $primary_color: saturate(lighten($primary_light_color, 5%), 4%);
