@@ -40,7 +40,7 @@
   "Help & Information": [
     {
       "title": "Changelog",
-      "url": "https://github.com/derpibooru/philomena/commits/master",
+      "url": "https://github.com/sizedev/philomena/commits/master",
       "bold": true
     },
     {
@@ -87,10 +87,6 @@
     {
       "title": "About",
       "url": "/pages/about"
-    },
-    {
-      "title": "Twitter",
-      "url": "https://twitter.com/Derpibooru"
     }
   ]
 }
