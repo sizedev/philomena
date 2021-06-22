@@ -205,7 +205,7 @@ defmodule Philomena.Elasticsearch do
 
     # Check to make sure each response was as success
     Enum.each(responses, fn res ->
-      %{status: 200} = res
+      %{"status" => 200} = res
     end)
 
     responses
