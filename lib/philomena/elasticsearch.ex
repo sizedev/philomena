@@ -195,7 +195,7 @@ defmodule Philomena.Elasticsearch do
         ]
       end)
 
-    {:ok, %{body: %{ responses: responses }, status_code: 200}} =
+    {:ok, %{body: %{ "responses": responses }, status_code: 200}} =
       Elastix.Search.search(
         elastic_url(),
         "_all",
