@@ -7,7 +7,7 @@
           </linearGradient>
      </defs>
      <filter id="neon">
-        <feFlood flood-color="#c9ff97" flood-opacity="0.5" in="SourceGraphic" />
+        <feFlood flood-color="#ffffff" flood-opacity="0.5" in="SourceGraphic" />
         <feComposite operator="in" in2="SourceGraphic" />
         <feGaussianBlur stdDeviation="10" />
         <feComponentTransfer result="glow1">
@@ -18,8 +18,8 @@
            <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
-     <rect id="bg" x="0" y="0" width="100%" height="100%" fill="url(#bg-gradient)"/>
-     <path id="Selection" fill="#c0ffea" stroke="none" stroke-width="1" filter="url(#neon)"
+     <rect id="bg" x="0" y="0" rx="100" ry="100" width="100%" height="100%" fill="url(#bg-gradient)"/>
+     <path id="Selection" fill="#ffffdd" stroke="none" stroke-width="1" filter="url(#neon)"
         d="M 96.00,140.21
            C 96.00,140.21 105.00,140.21 105.00,140.21
              137.18,140.14 170.54,154.12 182.58,186.00
