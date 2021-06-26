@@ -74,12 +74,7 @@ defmodule PhilomenaWeb.UserAttributionView do
   end
 
   def anonymous_avatar_url(name) do
-    svg =
-      name
-      |> AvatarGeneratorView.generated_avatar()
-      |> Enum.map_join(&safe_to_string/1)
-
-    "data:image/svg+xml;base64," <> Base.encode64(svg)
+    "/images/no_avatar.svg"
   end
 
   def user_labels(%{user: user}) do
