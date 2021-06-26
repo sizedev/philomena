@@ -3,7 +3,6 @@ defmodule PhilomenaWeb.UserAttributionView do
   use Bitwise
 
   alias Philomena.Attribution
-  alias PhilomenaWeb.AvatarGeneratorView
 
   def anonymous?(object) do
     Attribution.anonymous?(object)
