@@ -45,7 +45,7 @@ defmodule PhilomenaWeb.UserAttributionView do
     class = Enum.join(["image-constrained", class], " ")
 
     content_tag :div, class: class do
-      AvatarGeneratorView.generated_avatar(name)
+      img_tag("/images/no_avatar.svg")
     end
   end
 
